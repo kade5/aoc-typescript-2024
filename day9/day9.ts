@@ -129,29 +129,6 @@ function findEmptyBlocks(blockMap: string[], endPosition: number, size: number) 
     return emptyPosition;
 }
 
-function findBlocks(blockMap: string[], rightBound: number): [string, number, number] {
-    let i = rightBound;
-    let startBlock = -1;
-    let size = 0;
-    let fileId = "";
-
-    while (i > 0) {
-        if (blockMap[i] !== ".") {
-            if (startBlock === -1) {
-                startBlock = i;
-                fileId = blockMap[i];
-            }
-            size++;
-        } else if (size > 0) {
-            break;
-        }
-        i++;
-    }
-
-    return [fileId, startBlock, size];
-
-}
-
 function doPart1(input: string[]) {
     const blockMap = generateBlockMap(input);
     moveBlocks(blockMap);
